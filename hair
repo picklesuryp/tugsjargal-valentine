@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <title>💘 Төгсжаргалд зориулсан асуулт</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        h1 {
+            margin-top: 90px;
+            font-size: 26px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 30px;
+            position: absolute;
+            user-select: none;
+        }
+
+        #yes {
+            background-color: #ff2e63;
+            left: 35%;
+            top: 58%;
+        }
+
+        #no {
+            background-color: #555;
+            left: 55%;
+            top: 58%;
+        }
+    </style>
+
+    <script>
+        function yesClick() {
+            document.body.innerHTML = `
+                <h1>💖 Төгсжаргал 💖</h1>
+                <p>2-р сарын 14-ийг чамтай хамт өнгөрүүлэх болсондоо үнэхээр баяртай байна 😌💘</p>
+            `;
+        }
+
+        function moveNoButton() {
+            const btn = document.getElementById("no");
+            const maxX = window.innerWidth - btn.offsetWidth;
+            const maxY = window.innerHeight - btn.offsetHeight;
+
+            btn.style.left = Math.random() * maxX + "px";
+            btn.style.top  = Math.random() * maxY + "px";
+        }
+    </script>
+</head>
+
+<body>
+    <h1>💌 Төгсжаргал аа,<br>чи миний Valentine болох уу?</h1>
+
+    <button id="yes" onclick="yesClick()">Тийм 💖</button>
+
+    <button id="no"
+        onmouseover="moveNoButton()"
+        ontouchstart="moveNoButton()">
+        Үгүй 😅
+    </button>
+</body>
+</html>
