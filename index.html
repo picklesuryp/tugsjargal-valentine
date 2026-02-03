@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <title>💘 Төгсжаргалд зориулсан асуулт</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        h1 {
+            margin-top: 80px;
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 30px;
+            position: absolute;
+            user-select: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        #yes {
+            background-color: #ff2e63;
+            left: 35%;
+            top: 58%;
+        }
+
+        #no {
+            background-color: #555;
+            left: 55%;
+            top: 58%;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff2e63;
+            opacity: 0.7;
+            pointer-events: none;
+            animation: fall 3s linear forwards;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>💌 Төгсжаргал аа,<br>чи миний Valentine болох уу?</h1>
+
+    <button id="yes" onclick="yesClick()">Тийм 💖</button>
+
+    <button id="no" onmouseover="moveNoButton()" ontouchstart="moveNoButton()">Үгүй 😅</button>
+
+    <script>
+        const name = "Төгсжаргал"; // Нэрийг энд оруулсан
+
+        function yesClick() {
+            document.body.innerHTML = `
+                <h1>💖 Сайн уу ${name}! 💖</h1>
+                <p>2-р сарын 14-ийг чамтай хамт өнгөрүүлэх болсондоо үнэхээр баяртай байна 😌💘</p>
+            `;
+            startConfetti();
+        }
+
+        function moveNoButton() {
+            const btn = document.getElementById("no");
+            const maxX = window.innerWidth - btn.offsetWidth;
+            const maxY = window.innerHeight - btn.offsetHeight;
+
+            btn.style.left = Math.random() * maxX + "px";
+            btn.style.top  = Math.random() * maxY + "px";
+        }
+
+        function startConfetti() {
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement("div");
+                confetti.classList.add("confetti");
+                confetti.style.left = Math.random() * window.innerWidth + "px";
+                confetti.style.backgroundColor = randomColor();
+                document.body.appendChild(confetti);
+
+                setTimeout(() => {
+                    confetti.remove();
+                }, 3000 + Math.random() * 2000);
+            }
+        }
+
+        function randomColor() {
+            const colors = ["#ff2e63", "#ffb347", "#ff6f91", "#f9f871"];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+    </script>
+</body>
+</html>
